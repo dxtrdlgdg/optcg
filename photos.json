@@ -33,7 +33,7 @@
     "desc": "[Activate: Main] Once per turn, place 1 card from your hand at the bottom of your deck."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-041",
     "name": "Nami",
     "type": "Character",
@@ -44,7 +44,7 @@
     "desc": "[On Play] Draw 1 card. You may then place 1 card from your hand at the bottom of your deck."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP02-054",
     "name": "Gear 5",
     "type": "Event",
@@ -55,7 +55,7 @@
     "desc": "[Counter] Up to 1 of your Leader or Characters gains +4000 Power during this battle."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-062",
     "name": "Thousand Sunny",
     "type": "Stage",
@@ -66,7 +66,7 @@
     "desc": "[Activate: Main] Once per turn, rest this Stage to give one of your Characters +1000 Power."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-015",
     "name": "Tony Tony Chopper",
     "type": "Character",
@@ -77,7 +77,7 @@
     "desc": "[On Play] Look at top 3 cards, reveal up to 1 Character card and add it to your hand."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP02-033",
     "name": "Nico Robin",
     "type": "Character",
@@ -88,7 +88,7 @@
     "desc": "[On Play] You may trash 1 card from your hand to draw 2 cards."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-074",
     "name": "Usopp",
     "type": "Character",
@@ -99,7 +99,7 @@
     "desc": "[On Play] Give up to 1 of your opponent's Characters −1000 Power until your next turn."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-077",
     "name": "Sanji",
     "type": "Character",
@@ -110,7 +110,7 @@
     "desc": "[Rush] This Character can attack on the turn it is played."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-088",
     "name": "Impel Down",
     "type": "Stage",
@@ -121,7 +121,7 @@
     "desc": "[Your Turn] Opposing Characters get −1000 Power."
   },
   {
-    "driveId": null,
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
     "serial": "OP01-091",
     "name": "Buster Call",
     "type": "Event",
