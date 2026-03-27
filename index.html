@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Piece TCG Collection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --bg-surface: #141416;
+      --bg-card: #1a1a1e;
+      --bg-hover: #212126;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --text-primary: #f0ede8;
+      --text-secondary: #8a8680;
+      --text-muted: #4a4844;
+      --accent: #c8a96e;
+      --accent-dim: rgba(200,169,110,0.15);
+
+      --color-red: #E24B4A;
+      --color-blue: #378ADD;
+      --color-green: #639922;
+      --color-purple: #7F77DD;
+      --color-black: #888780;
+      --color-yellow: #EF9F27;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: 'Crimson Pro', Georgia, serif;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 0.5px solid var(--border);
+      padding: 2rem 2rem 1.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .header-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+
+    .header-count {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      padding: 1.25rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .controls-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .filter-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .filter-btn:hover { border-color: var(--border-hover); color: var(--text-primary); background: var(--bg-hover); }
+    .filter-btn.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+    .color-pip {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Main layout ── */
+    main { padding: 0 2rem 4rem; }
+
+    /* ── Section ── */
+    .section { margin-top: 2.5rem; }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+
+    .section-count {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── Card grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+      gap: 14px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--bg-card);
+      border-radius: 10px;
+      border: 0.5px solid var(--border);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      animation: fadeUp 0.3s ease both;
+    }
+    .card:hover { transform: translateY(-5px); border-color: var(--border-hover); background: var(--bg-hover); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-img-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--bg-surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .card:hover .card-img-wrap img { transform: scale(1.04); }
+
+    .card-img-placeholder {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 12px;
+      line-height: 1.5;
+    }
+
+    .color-bar { height: 2px; width: 100%; }
+
+    .card-body { padding: 10px 11px 13px; }
+
+    .card-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.3;
+    }
+
+    .card-serial {
+      font-family: 'Courier New', monospace;
+      font-size: 9.5px;
+      color: var(--accent);
+      margin-bottom: 8px;
+      letter-spacing: 0.06em;
+      opacity: 0.8;
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .type-badge { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 0.5px solid var(--border); }
+
+    .rarity-C  { background: rgba(180,178,169,0.15); color: #B4B2A9; border: 0.5px solid rgba(180,178,169,0.3); }
+    .rarity-UC { background: rgba(29,158,117,0.12); color: #5DCAA5; border: 0.5px solid rgba(29,158,117,0.3); }
+    .rarity-R  { background: rgba(55,138,221,0.12); color: #85B7EB; border: 0.5px solid rgba(55,138,221,0.3); }
+    .rarity-SR { background: rgba(127,119,221,0.12); color: #AFA9EC; border: 0.5px solid rgba(127,119,221,0.3); }
+    .rarity-L  { background: rgba(239,159,39,0.12); color: #FAC775; border: 0.5px solid rgba(239,159,39,0.3); }
+    .rarity-SP { background: rgba(212,83,126,0.12); color: #ED93B1; border: 0.5px solid rgba(212,83,126,0.3); }
+
+    .stats-row { display: flex; gap: 10px; margin-bottom: 8px; }
+    .stat { display: flex; flex-direction: column; gap: 1px; }
+    .stat-label { font-family: 'Cinzel', serif; font-size: 8.5px; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+    .stat-val { font-size: 13px; font-weight: 600; color: var(--text-primary); font-family: 'Cinzel', serif; }
+
+    .card-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      font-style: italic;
+    }
+
+    /* ── Empty state ── */
+    .empty {
+      padding: 3rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    /* ── Loading ── */
+    .loading {
+      padding: 4rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── Error ── */
+    .error-msg {
+      margin: 2rem 0;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border: 0.5px solid rgba(226,75,74,0.3);
+      background: rgba(226,75,74,0.08);
+      color: #F09595;
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header, .controls, main { padding-left: 1rem; padding-right: 1rem; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <span class="header-eyebrow">Trading Card Collection</span>
+      <h1>One Piece TCG</h1>
+    </div>
+    <span class="header-count" id="header-count"></span>
+  </header>
+
+  <div class="controls">
+    <span class="controls-label">Color</span>
+    <div id="filters"></div>
+  </div>
+
+  <main>
+    <div class="loading" id="loading">Loading collection...</div>
+    <div id="error" style="display:none;"></div>
+    <div id="collection"></div>
+  </main>
+
+  <script>
+    const COLOR_BARS = {
+      Red: '#E24B4A', Blue: '#378ADD', Green: '#639922',
+      Purple: '#7F77DD', Black: '#888780', Yellow: '#EF9F27', Multi: '#c8a96e'
+    };
+
+    const RARITY_ORDER = ['L', 'SP', 'SR', 'R', 'UC', 'C'];
+    const RARITY_LABELS = { L: 'Leader', SP: 'Special', SR: 'Secret Rare', R: 'Rare', UC: 'Uncommon', C: 'Common' };
+    const COLOR_FILTERS = ['All', 'Red', 'Blue', 'Green', 'Purple', 'Black', 'Yellow'];
+
+    let allCards = [];
+    let active = 'All';
+
+    function driveUrl(id) {
+      return `https://drive.google.com/uc?export=view&id=${id}`;
+    }
+
+    function renderFilters() {
+      document.getElementById('filters').innerHTML = COLOR_FILTERS.map(f => {
+        const pip = f !== 'All' ? `<span class="color-pip" style="background:${COLOR_BARS[f]};"></span>` : '';
+        return `<button class="filter-btn ${f === active ? 'active' : ''}" onclick="setFilter('${f}')">${pip}${f}</button>`;
+      }).join('');
+    }
+
+    function setFilter(f) {
+      active = f;
+      renderFilters();
+      renderCollection();
+    }
+
+    function cardHtml(c, idx) {
+      const bar = COLOR_BARS[c.color] || '#888780';
+      const img = c.driveId
+        ? `<img src="${driveUrl(c.driveId)}" alt="${c.name}" loading="lazy" onerror="this.parentElement.innerHTML='<div class=\\'card-img-placeholder\\'>image unavailable</div>'">`
+        : `<div class="card-img-placeholder">no image<br>${c.serial}</div>`;
+      const powerVal = c.power ? Number(c.power).toLocaleString() : '—';
+      const delay = (idx % 12) * 40;
+      return `
+        <div class="card" style="animation-delay:${delay}ms;">
+          <div class="card-img-wrap">${img}</div>
+          <div class="color-bar" style="background:${bar};"></div>
+          <div class="card-body">
+            <div class="card-name">${c.name}</div>
+            <div class="card-serial">${c.serial}</div>
+            <div class="card-meta">
+              <span class="badge type-badge">${c.type}</span>
+              <span class="badge rarity-${c.rarity}">${c.rarity}</span>
+            </div>
+            <div class="stats-row">
+              <div class="stat">
+                <span class="stat-label">Cost</span>
+                <span class="stat-val">${c.cost}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Power</span>
+                <span class="stat-val">${powerVal}</span>
+              </div>
+            </div>
+            <div class="card-desc">${c.desc}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderCollection() {
+      const filtered = active === 'All' ? allCards : allCards.filter(c => c.color === active);
+
+      const total = filtered.length;
+      document.getElementById('header-count').textContent =
+        total + ' card' + (total !== 1 ? 's' : '') + (active !== 'All' ? ' · ' + active : '');
+
+      if (total === 0) {
+        document.getElementById('collection').innerHTML = '<div class="empty">No cards found for this filter.</div>';
+        return;
+      }
+
+      const byRarity = {};
+      RARITY_ORDER.forEach(r => { byRarity[r] = []; });
+      filtered.forEach(c => { if (byRarity[c.rarity]) byRarity[c.rarity].push(c); });
+
+      let html = '';
+      RARITY_ORDER.forEach(r => {
+        if (!byRarity[r].length) return;
+        const sorted = [...byRarity[r]].sort((a, b) => a.serial.localeCompare(b.serial));
+        html += `
+          <div class="section">
+            <div class="section-header">
+              <span class="section-title">${RARITY_LABELS[r]}</span>
+              <div class="section-line"></div>
+              <span class="section-count">${sorted.length}</span>
+            </div>
+            <div class="grid">${sorted.map((c, i) => cardHtml(c, i)).join('')}</div>
+          </div>
+        `;
+      });
+
+      document.getElementById('collection').innerHTML = html;
+    }
+
+    async function loadCards() {
+      try {
+        const res = await fetch('photos.json');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        allCards = await res.json();
+        document.getElementById('loading').style.display = 'none';
+        renderFilters();
+        renderCollection();
+      } catch (err) {
+        document.getElementById('loading').style.display = 'none';
+        const errEl = document.getElementById('error');
+        errEl.style.display = 'block';
+        errEl.innerHTML = `
+          <div class="error-msg">
+            Could not load <code>photos.json</code> — ${err.message}.<br>
+            Make sure the file exists in the same folder as this <code>index.html</code>.
+          </div>
+        `;
+      }
+    }
+
+    loadCards();
+  </script>
+</body>
+</html>

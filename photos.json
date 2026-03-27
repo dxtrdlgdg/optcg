@@ -1,0 +1,134 @@
+[
+  {
+    "driveId": "1CQh4VJY6v0A2IaperR8Qqlo9wOun8S6q",
+    "serial": "EB02-061",
+    "name": "Monkey D. Luffy",
+    "type": "Character",
+    "color": "Gold",
+    "power": 7000,
+    "cost": 6,
+    "rarity": "SEC",
+    "desc": "[On Play] Give up to 1 of your opponent's Characters −3000 Power."
+  },
+  {
+    "driveId": "1bWUhw5ql1LsO6OE_1S314ed7YMkcsrh_",
+    "serial": "EB01-051",
+    "name": "CP9",
+    "type": "EVENT",
+    "color": "Green",
+    "power": null,
+    "cost": 4,
+    "rarity": "R*",
+    "desc": "[Blocker] Rest this Character to change the target of an attack."
+  },
+  {
+    "driveId": "15OJbVD6UQ-JXHHSFEki-ARTno5l68YbC",
+    "serial": "EB01-061",
+    "name": "Mr.2",
+    "type": "Character",
+    "color": "Gold",
+    "power": 1000,
+    "cost": 4,
+    "rarity": "SEC",
+    "desc": "[Activate: Main] Once per turn, place 1 card from your hand at the bottom of your deck."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-041",
+    "name": "Nami",
+    "type": "Character",
+    "color": "Blue",
+    "power": 1000,
+    "cost": 2,
+    "rarity": "R",
+    "desc": "[On Play] Draw 1 card. You may then place 1 card from your hand at the bottom of your deck."
+  },
+  {
+    "driveId": null,
+    "serial": "OP02-054",
+    "name": "Gear 5",
+    "type": "Event",
+    "color": "Red",
+    "power": null,
+    "cost": 3,
+    "rarity": "R",
+    "desc": "[Counter] Up to 1 of your Leader or Characters gains +4000 Power during this battle."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-062",
+    "name": "Thousand Sunny",
+    "type": "Stage",
+    "color": "Green",
+    "power": null,
+    "cost": 2,
+    "rarity": "UC",
+    "desc": "[Activate: Main] Once per turn, rest this Stage to give one of your Characters +1000 Power."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-015",
+    "name": "Tony Tony Chopper",
+    "type": "Character",
+    "color": "Blue",
+    "power": 2000,
+    "cost": 1,
+    "rarity": "UC",
+    "desc": "[On Play] Look at top 3 cards, reveal up to 1 Character card and add it to your hand."
+  },
+  {
+    "driveId": null,
+    "serial": "OP02-033",
+    "name": "Nico Robin",
+    "type": "Character",
+    "color": "Purple",
+    "power": 3000,
+    "cost": 3,
+    "rarity": "UC",
+    "desc": "[On Play] You may trash 1 card from your hand to draw 2 cards."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-074",
+    "name": "Usopp",
+    "type": "Character",
+    "color": "Yellow",
+    "power": 1000,
+    "cost": 1,
+    "rarity": "C",
+    "desc": "[On Play] Give up to 1 of your opponent's Characters −1000 Power until your next turn."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-077",
+    "name": "Sanji",
+    "type": "Character",
+    "color": "Yellow",
+    "power": 5000,
+    "cost": 4,
+    "rarity": "C",
+    "desc": "[Rush] This Character can attack on the turn it is played."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-088",
+    "name": "Impel Down",
+    "type": "Stage",
+    "color": "Black",
+    "power": null,
+    "cost": 1,
+    "rarity": "C",
+    "desc": "[Your Turn] Opposing Characters get −1000 Power."
+  },
+  {
+    "driveId": null,
+    "serial": "OP01-091",
+    "name": "Buster Call",
+    "type": "Event",
+    "color": "Black",
+    "power": null,
+    "cost": 5,
+    "rarity": "C",
+    "desc": "[Main] K.O. up to 1 of your opponent's Characters with 4000 Power or less."
+  }
+]
